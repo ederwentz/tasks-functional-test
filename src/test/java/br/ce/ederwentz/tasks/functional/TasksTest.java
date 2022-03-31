@@ -15,10 +15,12 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class TasksTest {
 	
 	public WebDriver acessarAplicacao() throws MalformedURLException {
-		WebDriver driver = new ChromeDriver();
-//		DesiredCapabilities cap = DesiredCapabilities.chrome();
+//		WebDriver driver = new ChromeDriver();
+		DesiredCapabilities cap = DesiredCapabilities.chrome();
 //		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.15:4444/wd/hub"), cap);
-		driver.navigate().to("http://localhost:8001/tasks");
+		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+		driver.navigate().to("http://192.168.1.15:8001/tasks");
+//		driver.navigate().to("http://localhost:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
@@ -115,7 +117,7 @@ public class TasksTest {
 		driver.findElement(By.id("task")).sendKeys("Teste via selenium");
 		
 		//escrever a data
-		driver.findElement(By.id("dueDate")).sendKeys("27/03/2021");
+		driver.findElement(By.id("dueDate")).sendKeys("27/03/2022");
 		
 		//clicar em salvar
 		driver.findElement(By.id("saveButton")).click();
