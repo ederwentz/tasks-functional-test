@@ -17,10 +17,10 @@ public class TasksTest {
 	public WebDriver acessarAplicacao() throws MalformedURLException {
 //		WebDriver driver = new ChromeDriver();
 		DesiredCapabilities cap = DesiredCapabilities.chrome();
-//		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.15:4444/wd/hub"), cap);
-		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
-		driver.navigate().to("http://192.168.1.15:8001/tasks");
-//		driver.navigate().to("http://localhost:8001/tasks");
+		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.1.15:4444/wd/hub"), cap);
+//		driver.navigate().to("http://192.168.1.15:8001/tasks");
+//		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
+		driver.navigate().to("http://localhost:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
@@ -44,7 +44,7 @@ public class TasksTest {
 		
 		//validar mensagem de sucesso
 		String message = driver.findElement(By.id("message")).getText();
-		Assert.assertEquals("Sucess!", message);
+		Assert.assertEquals("Success!", message);
 
 		} finally {
 		//fechar o browser
@@ -129,6 +129,38 @@ public class TasksTest {
 		} finally {
 		//fechar o browser
 		driver.quit();
+		}
+	}
+		
+		@Test
+		public void deveRemoverTarefaComSucesso() throws MalformedURLException {
+			WebDriver driver = acessarAplicacao();
+			try {
+			
+			//clicar no Remover
+			driver.findElement(By.id("addTodo")).click();
+			
+			//escrever a descrição
+			driver.findElement(By.id("task")).sendKeys("Teste via selenium");
+			
+			//escrever a data
+			driver.findElement(By.id("dueDate")).sendKeys("27/03/2022");
+			
+			//clicar em salvar
+			driver.findElement(By.id("saveButton")).click();
+			
+			//validar mensagem de sucesso
+			String message = driver.findElement(By.id("message")).getText();
+			Assert.assertEquals("Sucess!", message);
+
+			//remover a tarefa
+			driver.findElement(By.xpath("//a[@class='btn btn-outline-danger btn-sm']")).click();
+			message = driver.findElement(By.id("message")).getText();
+			Assert.assertEquals("Success!", message);
+			
+			} finally {
+			//fechar o browser
+			driver.quit();
 		}
 	}
 }
