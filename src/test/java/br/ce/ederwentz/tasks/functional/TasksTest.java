@@ -151,12 +151,12 @@ public class TasksTest {
 			
 			//validar mensagem de sucesso
 			String message = driver.findElement(By.id("message")).getText();
-			Assert.assertEquals("Success!", message);
+			Assert.assertEquals("Sucess!", message);
 
 			//remover a tarefa
 			driver.findElement(By.xpath("//a[@class='btn btn-outline-danger btn-sm']")).click();
 			message = driver.findElement(By.id("message")).getText();
-			Assert.assertEquals("Success!", message);
+			Assert.assertEquals("Sucess!", message);
 			
 			} finally {
 			//fechar o browser
