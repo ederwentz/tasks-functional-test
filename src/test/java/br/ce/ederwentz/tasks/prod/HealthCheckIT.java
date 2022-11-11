@@ -19,9 +19,9 @@ public class HealthCheckIT {
 		WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
 		try {
 		// local
-		//driver.navigate().to("http://localhost:9999/tasks");
+		driver.navigate().to("http://localhost:9999/tasks");
 		// servidor
-		driver.navigate().to("http://192.168.1.112:8004/tasks");
+		//driver.navigate().to("http://192.168.1.112:8004/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		String version = driver.findElement(By.id("version")).getText();
 		//System.out.println(version);
