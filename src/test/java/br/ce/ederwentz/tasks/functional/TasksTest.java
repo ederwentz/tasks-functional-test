@@ -24,7 +24,7 @@ public class TasksTest {
 //		driver.navigate().to("http://localhost:8001/tasks");
 		// Server dinamico
 		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.0.130:4444/wd/hub"), cap);
-		driver.navigate().to("http://192.168.0.130:8080/tasks");
+		driver.navigate().to("http://192.168.0.130:8001/tasks");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		return driver;
 	}
