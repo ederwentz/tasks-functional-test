@@ -19,7 +19,7 @@ public class HealthCheckIT {
 		// servidor local webdriver
 		//WebDriver driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"), cap);
 		// servidor remoto webdriver
-		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.0.130:4444/wd/hub"), cap);
+		WebDriver driver = new RemoteWebDriver(new URL("http://192.168.0.110:4444/wd/hub"), cap);
 		try {
 		// local
 		//driver.navigate().to("http://localhost:9999/tasks");
